@@ -1,0 +1,15 @@
+<div class="container">
+<div class="info-section">
+  <p>start works! {{giocatori}}</p>
+  Parola mostrata: {{parola_mostrata}}<br />
+  Giocatore corrente: {{current_player}}<br />
+  Intruso: {{intruso}}<br />
+</div>
+<app-carta [parola_mostrata]="parola_mostrata" [isFlipped]="girato" (gira)="onGira($event)"></app-carta>
+<div class="button-section">
+  <button [disabled]="current_player <= 1" (click)="backPlayer()">Precedente</button>
+  <button [disabled]="current_player >= giocatori" (click)="nextPlayer()">Prossimo</button>
+  <button (click)="giocaAncora()">Gioca ancora</button>
+  <button (click)="backToHome()">Torna alla home</button>
+</div>
+</div>

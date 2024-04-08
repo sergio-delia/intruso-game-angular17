@@ -1,0 +1,9 @@
+<p>newgame works!</p>
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+<label for="name">Number:
+<input formControlName="number" id="number" type="number">
+</label>
+<button type="submit">Avvia gioco</button>
+</form>
