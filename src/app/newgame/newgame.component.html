@@ -1,9 +1,11 @@
-<p>newgame works!</p>
-
-
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
-<label for="name">Number:
-<input formControlName="number" id="number" type="number">
-</label>
-<button type="submit">Avvia gioco</button>
-</form>
+<div class="container">
+  <h1>Benvenuto nel gioco dell'intruso</h1>
+  <h3>Scegli il numero di giocatori</h3>
+  <form class="newgame-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <mat-form-field class="example-full-width">
+    <mat-label>Numero giocatori</mat-label>
+    <input matInput formControlName="number" id="number" type="number" min="3">
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">Avvia gioco</button>
+  </form>
+</div>

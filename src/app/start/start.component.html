@@ -1,15 +1,26 @@
 <div class="container">
-<div class="info-section">
-  <p>start works! {{giocatori}}</p>
-  Parola mostrata: {{parola_mostrata}}<br />
-  Giocatore corrente: {{current_player}}<br />
-  Intruso: {{intruso}}<br />
+<div class="info-section" style="text-align:center">
+<h1>L'INTRUSO</h1>
+  <p>Numero giocatori: {{giocatori}}</p>
+  <p>Giocatore corrente: {{current_player}}</p>
 </div>
-<app-carta [parola_mostrata]="parola_mostrata" [isFlipped]="girato" (gira)="onGira($event)"></app-carta>
+<div class="display">
+  <div class="precedente">
+    <button [disabled]="current_player <= 1" (click)="backPlayer()">
+      <
+    </button>
+  </div>
+  <div class="carta">
+    <app-carta [parola_mostrata]="parola_mostrata" [isFlipped]="girato" (gira)="onGira($event)"></app-carta>
+  </div>
+  <div class="successivo">
+    <button [disabled]="current_player >= giocatori" (click)="nextPlayer()">
+      >
+    </button>
+  </div>
+</div>
 <div class="button-section">
-  <button [disabled]="current_player <= 1" (click)="backPlayer()">Precedente</button>
-  <button [disabled]="current_player >= giocatori" (click)="nextPlayer()">Prossimo</button>
-  <button (click)="giocaAncora()">Gioca ancora</button>
-  <button (click)="backToHome()">Torna alla home</button>
+  <button mat-flat-button color="primary" (click)="giocaAncora()"><mat-icon>loop</mat-icon>  Gioca ancora</button>
+  <button mat-flat-button color="warn" (click)="backToHome()">Torna alla home <mat-icon>home</mat-icon> </button>
 </div>
 </div>

@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartaComponent } from '../carta/carta.component';
 import { lista_parole } from '../lista_parole';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-start',
   standalone: true,
-  imports: [ CartaComponent ],
+  imports: [ CartaComponent, MatButtonModule, MatIconModule ],
   templateUrl: './start.component.html',
   styleUrl: './start.component.scss'
 })
@@ -22,7 +24,7 @@ export class StartComponent implements OnInit{
   selectedWord: string;
 
 
-  constructor( private route: ActivatedRoute, private router: Router){}
+  constructor( private route: ActivatedRoute, private router: Router, private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -39,6 +41,13 @@ export class StartComponent implements OnInit{
 
     }
   )
+  }
+
+  openSnackBar() {
+    this._snackBar.open(`Giocatore corrente: ${this.current_player}`, '', {
+      duration:20000,
+      panelClass: ['custom-snackbar']
+    });
   }
 
 giocaAncora(){
@@ -79,6 +88,7 @@ nextPlayer(){
   setTimeout(() => {
     this.current_player+=1
     this.checkPlayer();
+    this.openSnackBar();
   }, 1000);
 }
 
