@@ -45,7 +45,7 @@ export class StartComponent implements OnInit{
 
   openSnackBar() {
     this._snackBar.open(`Giocatore corrente: ${this.current_player}`, '', {
-      duration:20000,
+      duration:5000,
       panelClass: ['custom-snackbar']
     });
   }
